@@ -1,58 +1,98 @@
-/* 
-firstName
-lastName
-contact
-address
-college
-email
-password
-*/
+import { useState } from "react";
 
-import Button from "./Button";
+const CreateForm = () => {
+  const [name, setName] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
+  const [isDamage, setIsDamage] = useState("");
+  const [category, setCategory] = useState("");
 
-// jsx=> we can write html code inside js
-//js=> let name= manisha
-const Form = () => {
+  const handleClick = (e) => {
+    e.preventDefault();
+    const data = {
+      name: name,
+      quantity: quantity,
+      price: price,
+      isDamage: isDamage,
+      category: category,
+    };
+
+    console.log(data);
+  };
+
   return (
     <form>
       <div>
         <div>
           <div>
-            <label>First Name:</label>
-            <input type="text" name="" id="" />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label>Last Name:</label>
-            <input type="text" name="" id="" />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label>Contact:</label>
-            <input type="text" name="" id="" />
+            <label htmlFor="name">Name: </label>
+            <input
+              type="text"
+              name=""
+              id="name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
           </div>
 
           <div style={{ marginTop: "10px" }}>
-            <label>Address:</label>
-            <input type="text" name="" id="" />
+            <label htmlFor="quantity">Quantity: </label>
+            <input
+              type="text"
+              name=""
+              id="quantity"
+              value={quantity}
+              onChange={(e) => {
+                setQuantity(e.target.value);
+              }}
+            />
+          </div>
+
+          <div style={{ marginTop: "10px" }}>
+            <label htmlFor="price">Price: </label>
+            <input
+              type="text"
+              name=""
+              id="price"
+              value={price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+            />
           </div>
           <div style={{ marginTop: "10px" }}>
-            <label>College:</label>
-            <input type="text" name="" id="" />
+            <label htmlFor="isDamage">Is Damage: </label>
+            <input
+              type="text"
+              name=""
+              id="isDamage"
+              value={isDamage}
+              onChange={(e) => {
+                setIsDamage(e.target.value);
+              }}
+            />
           </div>
           <div style={{ marginTop: "10px" }}>
-            <label>Email:</label>
-            <input type="text" name="" id="" />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label>Password:</label>
-            <input type="text" name="" id="" />
+            <label htmlFor="category">Category: </label>
+            <input
+              type="text"
+              name=""
+              id="category"
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
+            />
           </div>
         </div>
         <div style={{ marginTop: "10px" }}>
-          <Button label={"Submit"}></Button>
+          <button onClick={handleClick}>Submit</button>
         </div>
       </div>
     </form>
   );
 };
 
-export default Form;
+export default CreateForm;

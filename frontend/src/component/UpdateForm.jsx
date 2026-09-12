@@ -1,15 +1,5 @@
 import Button from "./Button";
 
-/* 
-firstName
-lastName
-contact
-address
-college
-email
-password
-
- */
 const UpdateForm = () => {
   return (
     <form>
