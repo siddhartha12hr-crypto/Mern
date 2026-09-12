@@ -16,11 +16,5 @@ const productSchema = Schema({
   isDamage: {
     type: Boolean,
   },
-  email: {
-    type: String,
-  },
-  password: {
-    type: String,
-  },
 });
 export default productSchema;

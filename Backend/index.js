@@ -4,6 +4,7 @@
 import express, { json } from "express";
 import connectToDb from "./src/connectToDb/connectToDb.js";
 import productRouter from "./src/routes/productRouter.js";
+import cors from "cors";
 
 let app = express();
 
@@ -11,9 +12,9 @@ app.listen(8000, () => {
   console.log(`<---- Apllication is listening at 8000 ---->`);
   connectToDb();
 });
-
+app.use(cors());
 app.use(json()); //make our system capable to take json data , always place it at top
-app.use("/products", productRouter);
+app.use("/product", productRouter);
 // app.get("/tests", test);
 
 /* 

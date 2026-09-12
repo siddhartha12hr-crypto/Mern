@@ -1,11 +1,11 @@
+import axios from "axios";
 import { useState } from "react";
 
 const CreateForm = () => {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-  const [isDamage, setIsDamage] = useState("");
-  const [category, setCategory] = useState("");
+  const [isDamage, setIsDamage] = useState(false);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -14,12 +14,10 @@ const CreateForm = () => {
       quantity: quantity,
       price: price,
       isDamage: isDamage,
-      category: category,
     };
 
     console.log(data);
   };
-
   return (
     <form>
       <div>
@@ -62,27 +60,16 @@ const CreateForm = () => {
               }}
             />
           </div>
+
           <div style={{ marginTop: "10px" }}>
-            <label htmlFor="isDamage">Is Damage: </label>
+            <label htmlFor="Isdamage">Is Damage </label>
             <input
-              type="text"
+              type="checkbox"
               name=""
-              id="isDamage"
-              value={isDamage}
+              id="Isdamage"
+              checked={isDamage}
               onChange={(e) => {
-                setIsDamage(e.target.value);
-              }}
-            />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label htmlFor="category">Category: </label>
-            <input
-              type="text"
-              name=""
-              id="category"
-              value={category}
-              onChange={(e) => {
-                setCategory(e.target.value);
+                setIsDamage(e.target.checked);
               }}
             />
           </div>
