@@ -1,0 +1,7 @@
+index.js
+index.jsx=> allows us to write html code inside javascript
+framework=>React=> component based 
+
+link
+props=>the process of sending data from parent component to child
+useState Hooks

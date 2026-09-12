@@ -1,0 +1,73 @@
+
+npm init -y 
+npm i --save-dev nodemon
+
+to run file -npm start
+
+
+import dns from "node:dns";
+
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+app.use(json()); //make our system capable to take json data , always place it at top
+
+/*
+create a schema for user signup  =>name ,email ,password 
+create model name user
+create a route post get 
+
+*/
+
+create a schema for book
+
+title
+author
+price
+stock
+publication
+
+create model
+create controller
+create route
+define route in index
+
+1.college
+name-string
+location-string
+course-string
+dress-string
+
+
+2.address 
+location-string
+country-string
+zone-string
+muncipality-string
+ward-number
+
+
+status code
+200 range 
+200 ok
+201 created
+
+400 range
+400 error
+403-unauthorized-login failed
+404 -page not found
+
+async-handler
+npm i express-async-handler
+
+bcrypt
+npm i bcrypt
+
+
+token generate
+npm i jsonwebtoken
+
+
+sendMail
+middleware
+
+
