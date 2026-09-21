@@ -12,12 +12,12 @@ const Navbar = () => {
       >
         Read Product
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to={"/update"}
         style={{ marginLeft: "10px", textDecoration: "none" }}
       >
         Update Product
-      </NavLink>
+      </NavLink> */}
       <NavLink
         to={"/delete"}
         style={{ marginLeft: "10px", textDecoration: "none" }}

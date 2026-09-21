@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 const CreateForm = () => {
   const [name, setName] = useState("");
@@ -6,7 +7,7 @@ const CreateForm = () => {
   const [price, setPrice] = useState("");
   const [isDamage, setIsDamage] = useState(false);
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
     const data = {
       name: name,
@@ -15,7 +16,17 @@ const CreateForm = () => {
       isDamage: isDamage,
     };
 
-    console.log(data);
+    const result = await axios({
+      url: "http://localhost:8000/product",
+      method: "POST",
+      data: data,
+    });
+
+    setName("");
+    setPrice("");
+    setQuantity("");
+    setIsDamage("");
+    console.log(result);
   };
   return (
     <form>

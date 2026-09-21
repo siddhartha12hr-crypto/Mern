@@ -12,6 +12,7 @@ app.listen(8000, () => {
   console.log(`<---- Apllication is listening at 8000 ---->`);
   connectToDb();
 });
+// npm i cors
 app.use(cors());
 app.use(json()); //make our system capable to take json data , always place it at top
 app.use("/product", productRouter);

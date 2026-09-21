@@ -7,3 +7,13 @@ props=>the process of sending data from parent component to child
 useState Hooks
 
 url=>http://localhost:8000
+
+
+reallALL
+url
+method=get
+
+readSpecific
+url
+method
+id

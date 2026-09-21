@@ -1,33 +1,68 @@
-import Button from "./Button";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const UpdateForm = () => {
+  const [name, setName] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [price, setPrice] = useState("");
+  const [isDamage, setIsDamage] = useState(false);
+
   return (
     <form>
       <div>
         <div>
           <div>
             <label htmlFor="Name">Name: </label>
-            <input type="text" name="" id="Name" />
+            <input
+              type="text"
+              name=""
+              id="Name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
           </div>
           <div style={{ marginTop: "10px" }}>
             <label htmlFor="Quantity">Quantity: </label>
-            <input type="text" name="" id="Quantity" />
+            <input
+              type="text"
+              name=""
+              id="Quantity"
+              value={quantity}
+              onChange={(e) => {
+                setQuantity(e.target.value);
+              }}
+            />
           </div>
           <div style={{ marginTop: "10px" }}>
             <label htmlFor="Price">Price: </label>
-            <input type="text" name="" id="Price" />
+            <input
+              type="text"
+              name=""
+              id="Price"
+              value={price}
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+            />
           </div>
           <div style={{ marginTop: "10px" }}>
             <label htmlFor="Damage">Is Damage: </label>
-            <input type="text" name="" id="Damage" />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label htmlFor="Category">Category: </label>
-            <input type="text" name="" id="Category" />
+            <input
+              type="checkbox"
+              name=""
+              id="Damage"
+              checked={isDamage}
+              onChange={(e) => {
+                setIsDamage(e.target.checked);
+              }}
+            />
           </div>
         </div>
         <div style={{ marginTop: "10px" }}>
-          <Button label={"Update"}></Button>
+          <button onClick={handleClick}>Update</button>
         </div>
       </div>
     </form>
