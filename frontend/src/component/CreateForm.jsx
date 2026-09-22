@@ -3,21 +3,22 @@ import axios from "axios";
 
 const CreateForm = () => {
   const [name, setName] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [author, setAuthor] = useState("");
   const [price, setPrice] = useState("");
-  const [isDamage, setIsDamage] = useState(false);
+  const [quantity, setQuantity] = useState("");
 
   const handleClick = async (e) => {
     e.preventDefault();
     const data = {
       name: name,
-      quantity: quantity,
+      author: author,
       price: price,
+      quantity: quantity,
       isDamage: isDamage,
     };
 
     const result = await axios({
-      url: "http://localhost:8000/product",
+      url: "http://localhost:8000/books",
       method: "POST",
       data: data,
     });
@@ -25,7 +26,7 @@ const CreateForm = () => {
     setName("");
     setPrice("");
     setQuantity("");
-    setIsDamage("");
+    setAuthor("");
     console.log(result);
   };
   return (
@@ -46,14 +47,14 @@ const CreateForm = () => {
           </div>
 
           <div style={{ marginTop: "10px" }}>
-            <label htmlFor="quantity">Quantity: </label>
+            <label htmlFor="author">Author: </label>
             <input
               type="text"
               name=""
-              id="quantity"
-              value={quantity}
+              id="author"
+              value={author}
               onChange={(e) => {
-                setQuantity(e.target.value);
+                setAuthor(e.target.value);
               }}
             />
           </div>
@@ -72,17 +73,18 @@ const CreateForm = () => {
           </div>
 
           <div style={{ marginTop: "10px" }}>
-            <label htmlFor="Isdamage">Is Damage </label>
+            <label htmlFor="quantity">Quantity: </label>
             <input
-              type="checkbox"
+              type="text"
               name=""
-              id="Isdamage"
-              checked={isDamage}
+              id="quantity"
+              value={quantity}
               onChange={(e) => {
-                setIsDamage(e.target.checked);
+                setQuantity(e.target.value);
               }}
             />
           </div>
+
         </div>
         <div style={{ marginTop: "10px" }}>
           <button onClick={handleClick}>Submit</button>
