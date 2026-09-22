@@ -14,7 +14,6 @@ const CreateForm = () => {
       author: author,
       price: price,
       quantity: quantity,
-      isDamage: isDamage,
     };
 
     const result = await axios({
