@@ -1,71 +1,97 @@
+import React from "react";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
 const UpdateForm = () => {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [price, setPrice] = useState("");
-  const [isDamage, setIsDamage] = useState(false);
+
+  const params = useParams();
+  const id = params.id;
+
+  const navigate = useNavigate();
+
+  const getData = async () => {
+    const data = await axios({
+      url: `http://localhost:8000/books/${id}`,
+      method: "GET",
+    });
+
+    setName(data.data.result.name);
+    setQuantity(data.data.result.quantity);
+    setPrice(data.data.result.price);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+
+    const data = await axios({
+      url: `http://localhost:8000/books/${id}`,
+      method: "PATCH",
+      data: {
+        name: name,
+        quantity: quantity,
+        price: price,
+      },
+    });
+
+    console.log(data.data);
+
+    alert("Book updated successfully");
+
+    navigate("/read");
+  };
 
   return (
-    <form>
-      <div>
+    <div>
+      <h2>Update Book</h2>
+
+      <form onSubmit={handleClick}>
         <div>
-          <div>
-            <label htmlFor="Name">Name: </label>
-            <input
-              type="text"
-              name=""
-              id="Name"
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-              }}
-            />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label htmlFor="Quantity">Quantity: </label>
-            <input
-              type="text"
-              name=""
-              id="Quantity"
-              value={quantity}
-              onChange={(e) => {
-                setQuantity(e.target.value);
-              }}
-            />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label htmlFor="Price">Price: </label>
-            <input
-              type="text"
-              name=""
-              id="Price"
-              value={price}
-              onChange={(e) => {
-                setPrice(e.target.value);
-              }}
-            />
-          </div>
-          <div style={{ marginTop: "10px" }}>
-            <label htmlFor="Damage">Is Damage: </label>
-            <input
-              type="checkbox"
-              name=""
-              id="Damage"
-              checked={isDamage}
-              onChange={(e) => {
-                setIsDamage(e.target.checked);
-              }}
-            />
-          </div>
+          <label>Name: </label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
         </div>
+
         <div style={{ marginTop: "10px" }}>
-          <button onClick={handleClick}>Update</button>
+          <label>Quantity: </label>
+          <input
+            type="text"
+            value={quantity}
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+          />
         </div>
-      </div>
-    </form>
+
+        <div style={{ marginTop: "10px" }}>
+          <label>Price: </label>
+          <input
+            type="text"
+            value={price}
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+          />
+        </div>
+
+        <div style={{ marginTop: "10px" }}>
+          <button type="submit">Update</button>
+        </div>
+      </form>
+    </div>
   );
 };
 
