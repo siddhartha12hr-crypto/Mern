@@ -42,7 +42,7 @@ const UpdateForm = () => {
       },
     });
 
-    console.log(data.data);
+    console.log(data.data.result);
 
     alert("Book updated successfully");
 
